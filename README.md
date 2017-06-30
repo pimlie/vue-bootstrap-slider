@@ -7,15 +7,21 @@
 ## How to install
 Install from npm with:
 ```
-    npm install --save vue-bootstrap-slider
+npm install --save vue-bootstrap-slider
 ```
-Require or import like so for ES6:
+
+Require or import like so for ES6 (default export of this package is a VuePlugin):
 ```js
-    import VueBootstrapSlider from 'vue-bootstrap-slider';
+import bFormSlider from 'vue-bootstrap-slider';
+Vue.use(bFormSlider)
+```
+or
+```js
+import {bFormSlider} from 'vue-bootstrap-slider';
 ```
 or like this for CommonJS:
 ```js
-    var VueBootstrapSlider = require("vue-bootstrap-slider");
+var bFormSlider = require("vue-bootstrap-slider").bFormSlider
 ```
 
 Next import the bootstrap-slider styles (or use less or sass):
@@ -29,15 +35,25 @@ import 'bootstrap-slider/dist/css/bootstrap-slider.css'
 - Default: `0` milliseconds
 The events triggered by `bootstrap-slider` originates from mouse-move events and can easily flood your listeners. Setting this value will debounce the events trigger. You can also just debounce or throttle your own listener
 
+### `trigger-slide-event`
+- Default: `false`
+If the slide event should be triggered when programmatically setting the value
+
+### `trigger-change-event`
+- Default: `false`
+If the change (and input) event should be triggered when programmatically setting the value
+
+
 See [bootstrap-slider](https://github.com/seiyria/bootstrap-slider) for a full list of options
 
-## Examples
+## Example
 
-### Basic
+> See also [example.html](https://raw.githubusercontent.com/pimlie/vue-bootstrap-slider/master/example.html)
+
 ```html
 <template>
   <div>
-    <b-slider :value="value"/>
+    <b-form-slider :value="value"/>
     <p>Slider has value {{ value }}</p>
   </div>
 </template>
@@ -49,36 +65,6 @@ export default {
       value: 5
     }
   }
-}
-</script>
-```
-
-### Range
-```html
-// range
-<template>
-  <div>
-    <b-slider :value="range" range :min="config.min" :max="config.max" @change="change"/>
-    <p>Slider has value {{ range }}</p>
-  </div>
-</template>
-
-<script>
-export default {
-  data () {
-    return {
-      config: {
-        min: 0,
-        max: 100
-      }
-      range: [ 12, 67 ]
-    }
-  },
-
-  methods: {
-    change ({ oldValue, newValue }) {
-      console.log('Slider changed from ', oldValue.join(','), ' to', newValue.join(','))
-    }
 }
 </script>
 ```

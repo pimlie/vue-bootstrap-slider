@@ -1,0 +1,13 @@
+<div id="app">
+  <h1>Basic slider</h1>
+  <b-form-slider ref="basic" v-model="basicValue" :min="0" :max="100" trigger-change-event></b-form-slider>
+  <p>Value of slider is {{ basicValue }}</p>
+
+  <h1>Vertical slider</h1>
+  <b-form-slider ref="vertical" v-model="basicValue" :min="0" :max="100" orientation="vertical"></b-form-slider>
+  <p>Value of slider is {{ basicValue }}</p>
+
+  <h1>Range slider</h1>
+  <b-form-slider ref="range" v-model="rangeValue" range :min="0" :max="100"></b-form-slider>
+  <p>Value of slider is {{ rangeValue }}</p>
+</div>

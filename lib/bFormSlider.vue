@@ -1,5 +1,7 @@
 <template>
-  <input type="text" />
+  <div class="d-inline-block">
+    <input ref="input" type="text" />
+  </div>
 </template>
 
 <script>
@@ -17,12 +19,12 @@ export default {
   },
 
   mounted () {
-    this.slider = new Slider(this.$el, { ...this.$props, enabled: !this.disabled })
+    this.slider = new Slider(this.$refs.input, { ...this.$props, enabled: !this.disabled })
 
     const events = ['slide', 'slideStart', 'slideStop', 'change', 'slideEnabled', 'slideDisabled']
     events.forEach(event => {
       // only bind the event if the event is bound to us
-      if (this._events[event]) {
+      if (event === 'change' || this._events[event]) {
         this.slider.on(event, (value) => {
           if (this.debounce > 0) {
             const now = new Date().getTime()
@@ -34,6 +36,10 @@ export default {
           }
 
           this.$emit(event, value)
+          
+          if (event === 'change') {
+            this.$emit('input', value.newValue)
+          }
         })
       }
     })

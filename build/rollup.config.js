@@ -27,15 +27,7 @@ module.exports = {
     },
     moduleName: name,
     plugins: [
-        vue({
-            css: false
-            /* cssModules: {
-                generateScopedName: '[name]__[local]'
-            },
-            css(style) {
-                fs.writeFileSync(path.resolve(dist, `${name}.css`), new CleanCSS().minify(style).styles);
-            } */
-        }),
+        vue({css: false}),
         resolve({external: ['vue']}),
         commonjs(),
         buble({objectAssign: 'Object.assign'}),

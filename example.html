@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>Vue.js Bootstrap Slider test</title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@next/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-slider@latest/dist/css/bootstrap-slider.css">
+</head>
+
+<body>
+  <div class="container">
+    
+    <div id="app">
+      <h1>Basic slider</h1>
+      <b-form-slider v-model="basicValue" min="0" :max="100" trigger-change-event></b-form-slider>
+      <p>Value of slider is {{ basicValue }}</p>
+
+      <h1>Vertical slider</h1>
+      <b-form-slider v-model="basicValue" :min="0" :max="100" orientation="vertical"></b-form-slider>
+      <p>Value of slider is {{ basicValue }}</p>
+
+      <h1>Range slider</h1>
+      <b-form-slider v-model="rangeValue" range :min="0" :max="100" @change="change"></b-form-slider>
+      <p>Value of slider is {{ rangeValue }}</p>
+
+    </div>
+  </div>  
+
+  <script src="https://unpkg.com/vue@latest/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/tether@latest/dist/js/tether.min.js"></script>
+  <script src="https://unpkg.com/jquery@latest/dist/jquery.js"></script>
+  <script src="https://unpkg.com/bootstrap@next/dist/js/bootstrap.js"></script>
+  <script src="https://unpkg.com/bootstrap-slider@latest/dist/bootstrap-slider.js"></script>
+  <script src="https://unpkg.com/vue-bootstrap-slider@latest/dist/vue-bootstrap-slider.js"></script>
+  <script>
+    const app = new Vue({
+        el: '#app',
+        debug: true,
+        data: function() {
+          return {
+           basicValue: 50,
+           rangeValue: [25,75]
+          }
+        },
+        mounted () {
+          const self = this
+          setTimeout(function() {
+            self.basicValue = 33
+          }, 1000);
+        },
+        methods: {
+          change: function(value) {
+            console.log(value)
+          }
+        }
+    });
+  </script>
+</body>
+</html>

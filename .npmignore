@@ -1,0 +1,4 @@
+.npmignore
+.babelrc
+build
+__tests__
