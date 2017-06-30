@@ -1,6 +1,6 @@
 # Vue.js Bootstrap Slider
 [![npm](https://img.shields.io/npm/dt/pimlie/vue-bootstrap-slider.svg?style=flat-square)](https://npmjs.com/package/pimlie/vue-bootstrap-slider)
-[![npm](https://img.shields.io/npm/vt/pimlie/vue-bootstrap-slider.svg?style=flat-square)](https://npmjs.com/package/pimlie/vue-bootstrap-slider)
+[![npm](https://img.shields.io/npm/v/pimlie/vue-bootstrap-slider.svg?style=flat-square)](https://npmjs.com/package/pimlie/vue-bootstrap-slider)
 
 > Easily use [seiyria's Bootstrap Slider component](https://github.com/seiyria/bootstrap-slider) in Vue.js
 
