@@ -69,6 +69,19 @@ export default {
 </script>
 ```
 
+### Exclude jQuery dependency
+By default seiyria/bootstrap-slider requires jquery which means that if you include this package you will also add jquery to your project. If you do not use jquery anywhere in your project, check [here](https://github.com/seiyria/bootstrap-slider#how-do-i-exclude-the-optional-jquery-dependency-from-my-build) how to prevent the full jquery library from being added to your project build. 
+If you are using `nuxt` you can set the following in your `nuxt.config.js`:
+```js
+{
+  build: {
+    extend (config, ctx) {
+      config.resolve.alias['jquery'] = '~components/jquery-stub.js'
+    }
+  }
+}
+```
+
 ### Known issues
 - Tooltips are not working in Bootstrap 4, see this [issue](https://github.com/seiyria/bootstrap-slider/issues/689)
 
