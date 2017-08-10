@@ -35,4 +35,14 @@ describe('form-slider', async() => {
 
 	expect(spy).toHaveBeenCalled();
     })
+
+    it('should have ticks displayed', async () => {
+        const {app: {$refs, $el}} = window;
+
+        const vm = $refs.ticks
+
+        const tickContainer = vm.$el.querySelector('.slider-tick-label-container')
+        expect(tickContainer).not.toBeNull();
+        expect(tickContainer.childNodes.length).toEqual(3);
+    })
 });

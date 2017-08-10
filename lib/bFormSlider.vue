@@ -8,6 +8,14 @@
 import Slider from 'bootstrap-slider'
 import { props, watch } from './mixins'
 
+const snakeCase = (string) => {
+  const find = /([A-Z])/g
+  const convert = (matches) => {
+    return '_' + matches.toLowerCase()
+  }
+  return string.replace(find, convert)
+}
+
 export default {
   mixins: [props, watch],
 
@@ -19,7 +27,15 @@ export default {
   },
 
   mounted () {
-    this.slider = new Slider(this.$refs.input, { ...this.$props, enabled: !this.disabled })
+    const props = {}
+    for (var key in this.$props) {
+      if (this.$props.hasOwnProperty(key)) {
+        props[snakeCase(key)] = this.$props[key]
+      }
+    }
+    props.enabled = !this.disabled
+
+    this.slider = new Slider(this.$refs.input, props)
 
     const events = ['slide', 'slideStart', 'slideStop', 'change', 'slideEnabled', 'slideDisabled']
     events.forEach(event => {
