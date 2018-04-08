@@ -4,14 +4,20 @@
       "targets": {
         "browsers": ["last 2 versions", "safari >= 7"]
       },
-      "modules": "umd"
+      "modules": false
     }]
   ],
-  "plugins": [
-    // "transform-object-rest-spread",
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-    }]
-  ]
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "env", {
+            "targets": {
+              "node": 8
+            }
+          }
+        ]
+      ]
+    }
+  }
 }

@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import Vue from 'vue/dist/vue.common';
 import VueBootstrapSlider from '../lib';
 
-const readFile = (path) => String(readFileSync(resolve(__dirname, 'fixtures/', path)));
+const readFile = (path) => String(readFileSync(resolve(__dirname, 'fixtures/', path), 'UTF-8'));
 const throwIfNotVueInstance = vm => {
     if (!vm instanceof Vue) {
         // debugging breadcrumbs in case a non-Vue instance gets erroneously passed
@@ -17,6 +17,10 @@ const throwIfNotArray = array => {
     }
 }
 
+// Install Vue and VueBootstrapSlider
+window.Vue = Vue;
+Vue.use(VueBootstrapSlider);
+
 export function loadFixture(name) {
     const template = readFile(`${name}/demo.html`);
     const js = readFile(`${name}/demo.js`);
@@ -24,10 +28,6 @@ export function loadFixture(name) {
     return async() => {
         // Mount template
         document.body.innerHTML = template;
-
-        // Install Vue and VueBootstrapSlider
-        window.Vue = Vue;
-        Vue.use(VueBootstrapSlider);
 
         // Eval js
         eval(js);

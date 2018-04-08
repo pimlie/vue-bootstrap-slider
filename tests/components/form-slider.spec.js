@@ -27,13 +27,13 @@ describe('form-slider', async() => {
     it('should emit "input" event when changed', async () => {
         const {app: {$refs, $el}} = window;
 
-	const vm = $refs.basic
+        const vm = $refs.basic
         const spy = jest.fn()
 
         vm.$on('input', spy)
         await setData(app, 'basicValue', 33)
 
-	expect(spy).toHaveBeenCalled();
+        expect(spy).toHaveBeenCalled();
     })
 
     it('should have ticks displayed', async () => {
@@ -44,5 +44,19 @@ describe('form-slider', async() => {
         const tickContainer = vm.$el.querySelector('.slider-tick-label-container')
         expect(tickContainer).not.toBeNull();
         expect(tickContainer.childNodes.length).toEqual(3);
+    })
+
+    it('should display range highlights', async () => {
+        const {app: {$refs, $el}} = window;
+
+        const vm = $refs.rangeHighlights
+
+        let sliderTracks = vm.$el.querySelectorAll('.slider-track .primary-slider')
+        expect(sliderTracks).not.toBeNull();
+        expect(sliderTracks.length).toEqual(3);
+
+        sliderTracks = vm.$el.querySelectorAll('.slider-track .secondary-slider')
+        expect(sliderTracks).not.toBeNull();
+        expect(sliderTracks.length).toEqual(2);
     })
 });

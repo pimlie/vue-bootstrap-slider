@@ -17,7 +17,10 @@ const snakeCase = (string) => {
 }
 
 export default {
-  mixins: [props, watch],
+  mixins: [
+    props,
+    watch
+  ],
 
   data () {
     return {
@@ -28,9 +31,10 @@ export default {
 
   mounted () {
     const props = {}
-    for (var key in this.$props) {
+    for (let key in this.$props) {
       if (this.$props.hasOwnProperty(key)) {
-        props[snakeCase(key)] = this.$props[key]
+        let propskey = key === 'rangeHighlights' ? key : snakeCase(key)
+        props[propskey] = this.$props[key]
       }
     }
     props.enabled = !this.disabled

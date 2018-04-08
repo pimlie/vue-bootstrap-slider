@@ -40,8 +40,8 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^20.0.4",
-    "jest-vue-preprocessor": "^1.0.1",
-    "lodash": "latest",
+    "jest-css-modules": "^1.1.0",
+    "lodash": "^4.17.5",
     "rollup": "^0.43.0",
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-commonjs": "^8.0.2",
@@ -50,7 +50,8 @@
     "rollup-plugin-vue": "^2.4.0",
     "rollup-watch": "^4.0.0",
     "uglify-es": "^3.0.21",
-    "vue": "^2.3.3"
+    "vue": "^2.3.3",
+    "vue-jest": "^2.4.1"
   },
   "jest": {
     "testRegex": "spec.js$",
@@ -59,8 +60,9 @@
       "vue"
     ],
     "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+      "^.+\\.js$": "babel-jest",
+      ".*\\.(vue)$": "vue-jest",
+      ".*\\.(css)$": "jest-css-modules"
     }
   }
 }
