@@ -82,7 +82,10 @@ If you are using `nuxt` you can set the following in your `nuxt.config.js`:
 }
 ```
 
-### Known issues
-- Tooltips are not working in Bootstrap 4, see this [issue](https://github.com/seiyria/bootstrap-slider/issues/689)
+### Direct access to the Slider object from your component
+```js
+<b-form-slider ref="mySlider"></b-form-slider>
 
-
+const mySlider = this.$refs.mySlider
+mySlider.slider.refresh()
+```

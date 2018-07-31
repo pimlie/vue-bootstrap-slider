@@ -5,6 +5,8 @@ window.app = new Vue({
       simpleValue: 2,
       basicValue: 50,
       rangeValue: [25,75],
+      min: 0,
+      max: 100,
       ticks: [1, 2, 3],
       tickLabels: ['One', 'Two', 'Three'],
       rangeHighlights: [

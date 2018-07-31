@@ -59,4 +59,17 @@ describe('form-slider', async() => {
         expect(sliderTracks).not.toBeNull();
         expect(sliderTracks.length).toEqual(2);
     })
+
+    it('props are reactive', async () => {
+        const {app: {$refs, $el}} = window;
+
+        const vm = $refs.reactiveProps
+
+        let sliderReactive = vm.$el.querySelectorAll('.tooltip-main')
+        expect(sliderReactive).not.toBeNull();
+        expect(window.getComputedStyle(sliderReactive[0]).left).toEqual('2%');
+
+        await setData(app, 'max', 8)
+        expect(window.getComputedStyle(sliderReactive[0]).left).toEqual('25%');
+    })
 });
