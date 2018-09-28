@@ -13,9 +13,12 @@
     "type": "git",
     "url": "git+https://github.com/pimlie/vue-bootstrap-slider.git"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c build/rollup.config.js",
-    "lint": "eslint --ignore-path .gitignore --ext .js,.vue src",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.vue lib",
     "test": "jest"
   },
   "keywords": [
@@ -29,6 +32,7 @@
     "bootstrap-slider": "^10.2.1"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "babel-preset-env": "^1.7.0",
     "bootstrap": "^4.1.1",
@@ -51,7 +55,8 @@
     "rollup-watch": "^4.0.0",
     "uglify-es": "^3.3.10",
     "vue": "^2.5.16",
-    "vue-jest": "^2.6.0"
+    "vue-jest": "^2.6.0",
+    "vue-template-compiler": "^2.5.17"
   },
   "jest": {
     "testRegex": "spec.js$",

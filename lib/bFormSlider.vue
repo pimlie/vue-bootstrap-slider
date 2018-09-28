@@ -56,7 +56,7 @@ export default {
           }
 
           this.$emit(event, value)
-          
+
           if (event === 'change') {
             this.$emit('input', value.newValue)
           }
