@@ -1,55 +1,77 @@
-const fs = require('fs');
-const path = require('path');
-const vue = require('rollup-plugin-vue');
-const buble = require('rollup-plugin-buble');
-const resolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
-const uglify = require('rollup-plugin-uglify');
-const {minify} = require('uglify-es');
-const CleanCSS = require('clean-css');
-const {camelCase} = require('lodash');
-const {name, dependencies} = require('../package.json');
+import fs from 'fs'
+import path from 'path'
+import vuePlugin from 'rollup-plugin-vue'
+import commonJS from 'rollup-plugin-commonjs'
+import nodeResolve from 'rollup-plugin-node-resolve'
+import buble from 'rollup-plugin-buble'
+import { terser } from 'rollup-plugin-terser'
+import camelCase from 'lodash.camelcase'
+import { name, dependencies } from '../package.json'
 
-const base = path.resolve(__dirname, '..');
-const lib = path.resolve(base, 'lib');
-const dist = path.resolve(base, 'dist');
+const base = path.resolve(__dirname, '..')
+const lib = path.resolve(base, 'lib')
+const dist = path.resolve(base, 'dist')
 
 // Ensure dist directory exists
 if (!fs.existsSync(dist)) {
-    fs.mkdirSync(dist);
+  fs.mkdirSync(dist)
 }
 
-module.exports = {
-    entry: path.resolve(lib, 'index.js'),
-    external: Object.keys(dependencies),
+export default [{
+  input: path.resolve(lib, 'index.js'),
+  output: {
+    name: camelCase(name),
+    format: 'cjs',
     globals: {
       'bootstrap-slider': 'Slider'
     },
-    moduleName: name,
-    plugins: [
-        vue({css: false}),
-        resolve({external: ['vue']}),
-        commonjs(),
-        buble({objectAssign: 'Object.assign'}),
-        uglify({}, minify)
-    ],
-    targets: [
-        {
-            format: 'cjs',
-            moduleName: camelCase(name),
-            dest: path.resolve(dist, name + '.common.js'),
-            sourceMap: true
-        },
-        {
-            format: 'es',
-            dest: path.resolve(dist, name + '.esm.js'),
-            sourceMap: true
-        },
-        {
-            format: 'umd',
-            moduleName: camelCase(name),
-            dest: path.resolve(dist, name + '.js'),
-            sourceMap: true
-        }
-    ]
-};
+    file: path.resolve(dist, name + '.common.js'),
+    sourcemap: true
+  },
+  external: Object.keys(dependencies),
+  plugins: [
+    vuePlugin({ css: false }),
+    nodeResolve({ external: ['vue'], preferBuiltins: true }),
+    commonJS(),
+    buble({ objectAssign: 'Object.assign' }),
+    terser({ sourcemap: true })
+  ]
+}, {
+  input: path.resolve(lib, 'index.js'),
+  output: {
+    name,
+    format: 'es',
+    globals: {
+      'bootstrap-slider': 'Slider'
+    },
+    file: path.resolve(dist, name + '.esm.js'),
+    sourcemap: true
+  },
+  external: Object.keys(dependencies),
+  plugins: [
+    vuePlugin({ css: false }),
+    nodeResolve({ external: ['vue'], preferBuiltins: true }),
+    commonJS(),
+    buble({ objectAssign: 'Object.assign' }),
+    terser({ sourcemap: true })
+  ]
+}, {
+  input: path.resolve(lib, 'index.js'),
+  output: {
+    name: camelCase(name),
+    format: 'umd',
+    globals: {
+      'bootstrap-slider': 'Slider'
+    },
+    file: path.resolve(dist, name + '.js'),
+    sourcemap: true
+  },
+  external: Object.keys(dependencies),
+  plugins: [
+    vuePlugin({ css: false }),
+    nodeResolve({ external: ['vue'], preferBuiltins: true }),
+    commonJS(),
+    buble({ objectAssign: 'Object.assign' }),
+    terser({ sourcemap: true })
+  ]
+}]
