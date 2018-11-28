@@ -1,75 +1,92 @@
-import {loadFixture, testVM, setData} from '../helpers';
+import { loadFixture, testVM, setData } from '../helpers'
 
-describe('form-slider', async() => {
-    beforeEach(loadFixture('form-slider'));
-    testVM();
+describe('form-slider', () => {
+  beforeEach(loadFixture('form-slider'))
+  testVM()
 
-    it('has loaded bootstrap-slider', async () => {
-        const {app: {$refs, $el}} = window;
+  it('has loaded bootstrap-slider', () => {
+    const { app: { $refs } } = window
 
-        const slider = $refs.basic.$el.querySelector('.slider');
-        expect(slider).not.toBeNull();
-    });
+    const slider = $refs.basic.$el.querySelector('.slider')
+    expect(slider).not.toBeNull()
+  })
 
-    it('is correct type', async () => {
-        const {app: {$refs, $el}} = window;
+  it('is correct type', () => {
+    const { app: { $refs } } = window
 
-        const basic = $refs.basic.$el.querySelector('.slider');
-        expect(basic).toHaveClass('slider-horizontal')
-	
-        const vertical = $refs.vertical.$el.querySelector('.slider');
-        expect(vertical).toHaveClass('slider-vertical')
+    const basic = $refs.basic.$el.querySelector('.slider')
+    expect(basic).toHaveClass('slider-horizontal')
 
-        const range = $refs.range.$el.querySelector('.max-slider-handle');
-        expect(range).not.toHaveClass('hide')
-    });
+    const vertical = $refs.vertical.$el.querySelector('.slider')
+    expect(vertical).toHaveClass('slider-vertical')
 
-    it('should emit "input" event when changed', async () => {
-        const {app: {$refs, $el}} = window;
+    const range = $refs.range.$el.querySelector('.max-slider-handle')
+    expect(range).not.toHaveClass('hide')
+  })
 
-        const vm = $refs.basic
-        const spy = jest.fn()
+  it('should emit "input" event when changed', async () => {
+    const { app } = window
 
-        vm.$on('input', spy)
-        await setData(app, 'basicValue', 33)
+    const vm = app.$refs.basic
+    const spy = jest.fn()
 
-        expect(spy).toHaveBeenCalled();
-    })
+    vm.$on('input', spy)
+    vm.$on('change', spy)
+    await setData(app, 'basicValue', 33)
 
-    it('should have ticks displayed', async () => {
-        const {app: {$refs, $el}} = window;
+    expect(spy).toHaveBeenCalledTimes(2)
+  })
 
-        const vm = $refs.ticks
+  it('emits "change" event after min / max changed', async () => {
+    const { app } = window
 
-        const tickContainer = vm.$el.querySelector('.slider-tick-label-container')
-        expect(tickContainer).not.toBeNull();
-        expect(tickContainer.childNodes.length).toEqual(3);
-    })
+    const vm = app.$refs.range
+    const spy = jest.fn()
 
-    it('should display range highlights', async () => {
-        const {app: {$refs, $el}} = window;
+    vm.$on('change', spy)
+    await setData(app, 'rangeValue', [33, 66])
+    expect(spy).toHaveBeenCalledTimes(1)
 
-        const vm = $refs.rangeHighlights
+    await setData(app, 'min', 25)
+    await setData(app, 'max', 75)
+    await setData(app, 'rangeValue', [33, 75])
+    expect(spy).toHaveBeenCalledTimes(2)
+  })
 
-        let sliderTracks = vm.$el.querySelectorAll('.slider-track .primary-slider')
-        expect(sliderTracks).not.toBeNull();
-        expect(sliderTracks.length).toEqual(3);
+  it('should have ticks displayed', () => {
+    const { app: { $refs } } = window
 
-        sliderTracks = vm.$el.querySelectorAll('.slider-track .secondary-slider')
-        expect(sliderTracks).not.toBeNull();
-        expect(sliderTracks.length).toEqual(2);
-    })
+    const vm = $refs.ticks
 
-    it('props are reactive', async () => {
-        const {app: {$refs, $el}} = window;
+    const tickContainer = vm.$el.querySelector('.slider-tick-label-container')
+    expect(tickContainer).not.toBeNull()
+    expect(tickContainer.childNodes.length).toEqual(3)
+  })
 
-        const vm = $refs.reactiveProps
+  it('should display range highlights', () => {
+    const { app: { $refs } } = window
 
-        let sliderReactive = vm.$el.querySelectorAll('.tooltip-main')
-        expect(sliderReactive).not.toBeNull();
-        expect(window.getComputedStyle(sliderReactive[0]).left).toEqual('2%');
+    const vm = $refs.rangeHighlights
 
-        await setData(app, 'max', 8)
-        expect(window.getComputedStyle(sliderReactive[0]).left).toEqual('25%');
-    })
-});
+    let sliderTracks = vm.$el.querySelectorAll('.slider-track .primary-slider')
+    expect(sliderTracks).not.toBeNull()
+    expect(sliderTracks.length).toEqual(3)
+
+    sliderTracks = vm.$el.querySelectorAll('.slider-track .secondary-slider')
+    expect(sliderTracks).not.toBeNull()
+    expect(sliderTracks.length).toEqual(2)
+  })
+
+  it('props are reactive', async () => {
+    const { app } = window
+
+    const vm = app.$refs.reactiveProps
+
+    const sliderReactive = vm.$el.querySelectorAll('.tooltip-main')
+    expect(sliderReactive).not.toBeNull()
+    expect(window.getComputedStyle(sliderReactive[0]).left).toEqual('2%')
+
+    await setData(app, 'max', 8)
+    expect(window.getComputedStyle(sliderReactive[0]).left).toEqual('25%')
+  })
+})

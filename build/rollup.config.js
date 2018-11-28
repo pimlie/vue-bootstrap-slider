@@ -23,7 +23,7 @@ export default [{
     name: camelCase(name),
     format: 'cjs',
     globals: {
-      'bootstrap-slider': 'Slider'
+      ...dependencies
     },
     file: path.resolve(dist, name + '.common.js'),
     sourcemap: true
@@ -42,7 +42,7 @@ export default [{
     name,
     format: 'es',
     globals: {
-      'bootstrap-slider': 'Slider'
+      ...dependencies
     },
     file: path.resolve(dist, name + '.esm.js'),
     sourcemap: true
@@ -61,7 +61,7 @@ export default [{
     name: camelCase(name),
     format: 'umd',
     globals: {
-      'bootstrap-slider': 'Slider'
+      ...dependencies
     },
     file: path.resolve(dist, name + '.js'),
     sourcemap: true
