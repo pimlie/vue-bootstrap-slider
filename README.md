@@ -4,6 +4,8 @@
 
 > Easily use [seiyria's Bootstrap Slider component](https://github.com/seiyria/bootstrap-slider) in Vue.js
 
+Click [here](https://pimlie.github.io/vue-bootstrap-slider/example.html) for a live example
+
 ## How to install
 Install from npm with:
 ```
@@ -44,12 +46,10 @@ See [bootstrap-slider](https://github.com/seiyria/bootstrap-slider) for a full l
 
 ## Example
 
-> See also [example.html](https://raw.githubusercontent.com/pimlie/vue-bootstrap-slider/master/example.html)
-
 ```html
 <template>
   <div>
-    <b-form-slider :value="value"/>
+    <b-form-slider :value="value"></b-form-slider>
     <p>Slider has value {{ value }}</p>
   </div>
 </template>
