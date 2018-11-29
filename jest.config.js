@@ -8,7 +8,6 @@ module.exports = {
 
   "transform": {
     "^.+\\.js$": "babel-jest",
-    ".*\\.(vue)$": "vue-jest",
-    ".*\\.(css)$": "jest-css-modules"
+    ".*\\.(vue)$": "vue-jest"
   }
 }

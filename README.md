@@ -10,18 +10,14 @@ Install from npm with:
 npm install --save vue-bootstrap-slider
 ```
 
-Require or import like so for ES6 (default export of this package is a VuePlugin):
+The default export of this package is a VuePlugin.
 ```js
 import bFormSlider from 'vue-bootstrap-slider';
 Vue.use(bFormSlider)
 ```
-or
+if you wish to import the component you can use:
 ```js
-import {bFormSlider} from 'vue-bootstrap-slider';
-```
-or like this for CommonJS:
-```js
-var bFormSlider = require("vue-bootstrap-slider").bFormSlider
+import bFormSlider from 'vue-bootstrap-slider/es/form-slider';
 ```
 
 Next import the bootstrap-slider styles (or use less or sass):
