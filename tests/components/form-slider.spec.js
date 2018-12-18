@@ -8,7 +8,7 @@ describe('form-slider', () => {
     const { app: { $refs } } = window
 
     const slider = $refs.basic.$el.querySelector('.slider')
-    expect(slider).not.toBeNull()
+    expect(slider).not.toBeFalsy()
   })
 
   it('is correct type', () => {
@@ -37,6 +37,21 @@ describe('form-slider', () => {
     expect(spy).toHaveBeenCalledTimes(2)
   })
 
+  it('value is persistent on refresh', async () => {
+    const { app } = window
+
+    const vm = app.$refs.basic
+    await setData(app, 'basicValue', 33)
+
+    const sliderHandle = vm.$el.querySelectorAll('.slider-handle')[0]
+    expect(sliderHandle).not.toBeFalsy()
+    expect(window.getComputedStyle(sliderHandle).left).toEqual('33%')
+
+    vm.refresh()
+
+    expect(window.getComputedStyle(sliderHandle).left).toEqual('33%')
+  })
+
   it('emits "change" event after min / max changed', async () => {
     const { app } = window
 
@@ -59,7 +74,7 @@ describe('form-slider', () => {
     const vm = $refs.ticks
 
     const tickContainer = vm.$el.querySelector('.slider-tick-label-container')
-    expect(tickContainer).not.toBeNull()
+    expect(tickContainer).not.toBeFalsy()
     expect(tickContainer.childNodes.length).toEqual(3)
   })
 
@@ -69,11 +84,11 @@ describe('form-slider', () => {
     const vm = $refs.rangeHighlights
 
     let sliderTracks = vm.$el.querySelectorAll('.slider-track .primary-slider')
-    expect(sliderTracks).not.toBeNull()
+    expect(sliderTracks).not.toBeFalsy()
     expect(sliderTracks.length).toEqual(3)
 
     sliderTracks = vm.$el.querySelectorAll('.slider-track .secondary-slider')
-    expect(sliderTracks).not.toBeNull()
+    expect(sliderTracks).not.toBeFalsy()
     expect(sliderTracks.length).toEqual(2)
   })
 
@@ -83,7 +98,7 @@ describe('form-slider', () => {
     const vm = app.$refs.reactiveProps
 
     const sliderReactive = vm.$el.querySelectorAll('.tooltip-main')
-    expect(sliderReactive).not.toBeNull()
+    expect(sliderReactive).not.toBeFalsy()
     expect(window.getComputedStyle(sliderReactive[0]).left).toEqual('2%')
 
     await setData(app, 'max', 8)
