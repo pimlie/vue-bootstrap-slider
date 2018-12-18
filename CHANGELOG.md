@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/pimlie/vue-bootstrap-slider/compare/v2.0.1...v2.1.0) (2018-12-18)
+
+
+### Bug Fixes
+
+* re-set value after refresh ([acdcf4e](https://github.com/pimlie/vue-bootstrap-slider/commit/acdcf4e))
+* typo ([afdc706](https://github.com/pimlie/vue-bootstrap-slider/commit/afdc706))
+
+
+### Features
+
+* dont use unnecessary mixins in component ([86f66e3](https://github.com/pimlie/vue-bootstrap-slider/commit/86f66e3))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/pimlie/vue-bootstrap-slider/compare/v2.0.0...v2.0.1) (2018-11-29)
 
