@@ -22,8 +22,8 @@ window.Vue = Vue
 Vue.use(VueBootstrapSlider)
 
 export function loadFixture(name) {
-  const template = readFile(`${name}/demo.html`)
-  const js = readFile(`${name}/demo.js`)
+  const template = readFile(`${name}.html`)
+  const js = readFile(`${name}.js`)
 
   return async () => {
     // Mount template

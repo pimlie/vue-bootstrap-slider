@@ -16,7 +16,7 @@
 
     <div id="app">
       <h1>Basic slider</h1>
-      <b-form-slider ref="basic" v-model="basicValue" :min="0" :max="100" trigger-change-event></b-form-slider>
+      <b-form-slider ref="basic" v-model="basicValue" :min="0" :max="100" trigger-change-event @slide-start="slideStart"></b-form-slider>
       <p>Value of slider is {{ basicValue }}</p>
 
       <h1>Vertical slider</h1>
@@ -61,6 +61,11 @@
             { 'start': 71, 'end': 95, 'class': 'secondary-slider' },
             { 'start': 95, 'end': 119, 'class': 'primary-slider' }
           ]
+        }
+      },
+      methods: {
+        slideStart: function () {
+          console.log('slideStarted')
         }
       }
     })

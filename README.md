@@ -44,12 +44,15 @@ If the change (and input) event should be triggered when programmatically settin
 
 See [bootstrap-slider](https://github.com/seiyria/bootstrap-slider) for a full list of options
 
+> :exclamation: When listening to slider events, listen to the kebab-case'd event name and not the camelCase'd. E.g. listen for `@slide-start` and not for `@slideStart`
+
+
 ## Example
 
 ```html
 <template>
   <div>
-    <b-form-slider :value="value"></b-form-slider>
+    <b-form-slider :value="value" @slide-start="slideStart" @slide-stop="slideStop"></b-form-slider>
     <p>Slider has value {{ value }}</p>
   </div>
 </template>
@@ -59,6 +62,14 @@ export default {
   data () {
     return {
       value: 5
+    }
+  },
+  methods: {
+    slideStart () {
+      console.log('slideStarted')
+    },
+    slideStop () {
+      console.log('slideStopped')
     }
   }
 }
