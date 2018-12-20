@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/pimlie/vue-bootstrap-slider/compare/v2.1.0...v2.1.1) (2018-12-20)
+
+
+### Bug Fixes
+
+* force kebab-case event names ([51f1969](https://github.com/pimlie/vue-bootstrap-slider/commit/51f1969))
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/pimlie/vue-bootstrap-slider/compare/v2.0.1...v2.1.0) (2018-12-18)
 
