@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/pimlie/vue-bootstrap-slider/compare/v2.1.3...v2.1.4) (2019-01-10)
+
+
+### Bug Fixes
+
+* only refresh when slider still exists ([f808c60](https://github.com/pimlie/vue-bootstrap-slider/commit/f808c60))
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/pimlie/vue-bootstrap-slider/compare/v2.1.2...v2.1.3) (2019-01-06)
 

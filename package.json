@@ -1,6 +1,6 @@
 {
   "name": "vue-bootstrap-slider",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Vue bindings for seiyria/bootstrap-slider",
   "author": "pimlie <pimlie@hotmail.com>",
   "main": "dist/vue-bootstrap-slider.common.js",
