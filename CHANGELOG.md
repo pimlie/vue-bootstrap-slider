@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.7"></a>
+## [2.1.7](https://github.com/pimlie/vue-bootstrap-slider/compare/v2.1.6...v2.1.7) (2019-01-15)
+
+
+### Bug Fixes
+
+* use lodash es imports ([4f5a664](https://github.com/pimlie/vue-bootstrap-slider/commit/4f5a664))
+
+
+
 <a name="2.1.6"></a>
 ## [2.1.6](https://github.com/pimlie/vue-bootstrap-slider/compare/v2.1.5...v2.1.6) (2019-01-10)
 
