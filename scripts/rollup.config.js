@@ -5,7 +5,7 @@ import commonJS from 'rollup-plugin-commonjs'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import buble from 'rollup-plugin-buble'
 import { terser } from 'rollup-plugin-terser'
-import camelCase from 'lodash.camelcase'
+import camelCase from 'lodash/camelCase'
 import { name, dependencies } from '../package.json'
 
 const base = path.resolve(__dirname, '..')
@@ -13,9 +13,9 @@ const lib = path.resolve(base, 'lib')
 const dist = path.resolve(base, 'dist')
 
 const externalExcludes = [
-  'lodash.camelcase',
-  'lodash.snakecase',
-  'lodash.throttle'
+  'lodash/camelCase',
+  'lodash/snakeCase',
+  'lodash/throttle',
 ]
 
 const baseConfig = {
@@ -43,9 +43,7 @@ export default [{
     file: path.resolve(dist, name + '.js'),
     sourcemap: true
   },
-  external: Object.keys(dependencies).filter(
-    dep => !externalExcludes.includes(dep)
-  )
+  external: Object.keys(dependencies)
 }, {
   ...baseConfig,
   output: {

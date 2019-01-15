@@ -33,9 +33,7 @@
   ],
   "dependencies": {
     "bootstrap-slider": "^10.6.0",
-    "lodash.camelcase": "^4.3.0",
-    "lodash.snakecase": "^4.1.1",
-    "lodash.throttle": "^4.1.1"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
