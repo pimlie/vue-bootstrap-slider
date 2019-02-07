@@ -1,13 +1,17 @@
 module.exports = {
-  "testRegex": "spec.js$",
+  testRegex: 'spec.js$',
 
-  "moduleFileExtensions": [
-    "js",
-    "vue"
+  moduleFileExtensions: [
+    'js',
+    'vue'
   ],
 
-  "transform": {
-    "^.+\\.js$": "babel-jest",
-    ".*\\.(vue)$": "vue-jest"
+  transformIgnorePatterns: [
+    'node_modules'
+  ],
+
+  transform: {
+    '^.+\\.js$': 'babel-jest',
+    '.*\\.(vue)$': 'vue-jest'
   }
 }
