@@ -1,3 +1,5 @@
+> :warning: Please note this package is just a wrapper and not really a vue component. If you are looking for a real vue slider component take a look at [vue-slider-component](https://github.com/NightCatSama/vue-slider-component) which recently added support for custom themes
+
 # Vue.js Bootstrap Slider
 [![npm](https://img.shields.io/npm/dt/vue-bootstrap-slider.svg?style=flat-square)](https://npmjs.com/package/vue-bootstrap-slider)
 [![npm](https://img.shields.io/npm/v/vue-bootstrap-slider.svg?style=flat-square)](https://npmjs.com/package/vue-bootstrap-slider)
@@ -77,7 +79,7 @@ export default {
 ```
 
 ### Exclude jQuery dependency
-By default seiyria/bootstrap-slider requires jquery which means that if you include this package you will also add jquery to your project. If you do not use jquery anywhere in your project, check [here](https://github.com/seiyria/bootstrap-slider#how-do-i-exclude-the-optional-jquery-dependency-from-my-build) how to prevent the full jquery library from being added to your project build. 
+By default seiyria/bootstrap-slider requires jquery which means that if you include this package you will also add jquery to your project. If you do not use jquery anywhere in your project, check [here](https://github.com/seiyria/bootstrap-slider#how-do-i-exclude-the-optional-jquery-dependency-from-my-build) how to prevent the full jquery library from being added to your project build.
 If you are using `nuxt` you can set the following in your `nuxt.config.js`:
 ```js
 {
